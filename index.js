@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import bcrypt from "bcrypt";
-import jwt from "jsonWebToken";
+import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 import cookieParser from "cookie-parser";
