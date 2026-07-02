@@ -701,7 +701,8 @@ app.use((error, req, res, next) => {
 });
 
 
-app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}/`));
+// app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}/`));
+export default app;
 
 
 
