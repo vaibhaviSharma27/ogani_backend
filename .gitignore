@@ -7,3 +7,4 @@ newsletter.js
 practice.js
 products.json
 .vercel
+.env*

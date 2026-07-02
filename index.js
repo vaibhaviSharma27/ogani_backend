@@ -19,10 +19,12 @@ import crypto from "crypto";
 
 // Establish db connection
 
-mongoose.connect("mongodb://vaibhavisharmasv2527_db_user:9S6k506DHbXWbYEH@ac-ogpfigc-shard-00-00.w8ga4ny.mongodb.net:27017,ac-ogpfigc-shard-00-01.w8ga4ny.mongodb.net:27017,ac-ogpfigc-shard-00-02.w8ga4ny.mongodb.net:27017/ogani?ssl=true&replicaSet=atlas-93qpaw-shard-0&authSource=admin&appName=Cluster0")
-    .then(() => console.log("Connected to the ogani database successfully"))
-    .catch((err) => console.log(err));
-
+try {
+    await mongoose.connect("mongodb://vaibhavisharmasv2527_db_user:9S6k506DHbXWbYEH@ac-ogpfigc-shard-00-00.w8ga4ny.mongodb.net:27017,ac-ogpfigc-shard-00-01.w8ga4ny.mongodb.net:27017,ac-ogpfigc-shard-00-02.w8ga4ny.mongodb.net:27017/ogani?ssl=true&replicaSet=atlas-93qpaw-shard-0&authSource=admin&appName=Cluster0")
+    console.log("Connected!");
+} catch (error) {
+    console.log(error)
+}
 
 // /createorder, /verifypayment => /payment/createorder   /payment/verifypayment
 
@@ -658,7 +660,7 @@ app.get("/products", async (req, res) => {
     try {
         const { q, category } = req.query;
 
-        const ogani = mongoose.connection.db;
+        const ogani = await mongoose.connection.db;
         const products = await ogani.collection("products").find({ title: { $regex: q || "", $options: "i" }, category: { $regex: category || "", $options: "i" } }).toArray();
         const categories = await ogani.collection("products").distinct("category");
 
