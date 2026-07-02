@@ -1,0 +1,8 @@
+.env
+node_modules
+temp
+checklist.md
+index.html
+newsletter.js
+practice.js
+products.json
