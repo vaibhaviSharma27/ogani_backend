@@ -17,6 +17,21 @@ import nodemailer from "nodemailer";
 import Razorpay from "razorpay";
 import crypto from "crypto";
 
+
+
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
+
+app.use("/image", express.static(path.join("uploads")));
+
+
+
+
 // Establish db connection
 
 try {
@@ -79,13 +94,7 @@ const Wishlist = mongoose.model("wishlist", wishlistSchema);
 
 // Initialize the app
 
-const app = express();
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
-}));
+
 
 
 // User Routes
@@ -589,7 +598,6 @@ app.get("/logout", (req, res) => {
 // }
 // })
 
-app.use("/image", express.static("./uploads"));
 
 const uploader = multer({
     storage: multer.memoryStorage()
