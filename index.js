@@ -27,7 +27,7 @@ app.use(cors({
     credentials: true
 }));
 
-app.use("/image", express.static(path.join("uploads")));
+app.use("/image", express.static(path.join(process.cwd(),"uploads")));
 
 
 
