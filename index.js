@@ -142,7 +142,7 @@ app.post("/login", express.json(), async (req, res) => {
             throw new Error("Invalid Credentials");
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "30d" });
-        res.cookie("jwt", token, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+        res.cookie("jwt", token, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, secure: true, sameSite: "None" });
 
         // maxAge is the expiry of the cookie and is stored in milliseconds only .
 
