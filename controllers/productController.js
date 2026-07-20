@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 export async function getProducts(req, res){
     try {
         const { q, category } = req.query;
