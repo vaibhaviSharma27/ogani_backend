@@ -229,8 +229,8 @@ app.use((error, req, res, next) => {
 });
 
 
-app.listen(3000, () => console.log(`http://localhost:${process.env.PORT}/`));
-// export default app;
+// app.listen(3000, () => console.log(`http://localhost:${process.env.PORT}/`));
+export default app;
 
 
 
